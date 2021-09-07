@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <BuildTasksDirectory Condition=" '$(BuildTasksDirectory)' == ''">$(MSBuildProgramFiles32)\MSBuild\Microsoft\Dynamics\AX</BuildTasksDirectory>
+    <Model>BusinessEventsAux</Model>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <OutputPath>bin</OutputPath>
+    <SchemaVersion>2.0</SchemaVersion>
+    <GenerateCrossReferences>True</GenerateCrossReferences>
+    <RunAppCheckerRules>False</RunAppCheckerRules>
+    <LogAppcheckerDiagsAsErrors>False</LogAppcheckerDiagsAsErrors>
+    <ProjectGuid>{2da7ef87-f731-4af0-b2b7-ca5a157b35d5}</ProjectGuid>
+    <Name>BusinessEventsAux</Name>
+    <RootNamespace>BusinessEventsAux</RootNamespace>
+    <StartupType>Form</StartupType>
+    <StartupObject>BusinessEventsEndpointConfiguration (BusinessEventsEndpointConfiguration.BusinessEventsAux)</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
+    <Configuration>Debug</Configuration>
+    <DBSyncInBuild>False</DBSyncInBuild>
+    <GenerateFormAdaptors>False</GenerateFormAdaptors>
+    <Company>
+    </Company>
+    <Partition>initial</Partition>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DataEntityExpandParentChildRelations>False</DataEntityExpandParentChildRelations>
+    <DataEntityUseLabelTextAsFieldName>False</DataEntityUseLabelTextAsFieldName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>true</DebugSymbols>
+    <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Base Enum Extensions\" />
+    <Folder Include="Base Enums\" />
+    <Folder Include="Display Menu Items\" />
+    <Folder Include="EDT Strings" />
+    <Folder Include="Form Extensions\" />
+    <Folder Include="Forms\" />
+    <Folder Include="Label Files\" />
+    <Folder Include="Classes" />
+    <Folder Include="EDT Integers" />
+    <Folder Include="Action Menu Items" />
+    <Folder Include="Menu Extensions\" />
+    <Folder Include="Security Duty Extensions\" />
+    <Folder Include="Security Privileges" />
+    <Folder Include="Tables" />
+    <Folder Include="Table Extensions\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="AxClass\BusinessEventsAuxFeature">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsAuxFeature</Name>
+      <Link>Classes\BusinessEventsAuxFeature</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsAuxFeatureExposure">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsAuxFeatureExposure</Name>
+      <Link>Classes\BusinessEventsAuxFeatureExposure</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsCommitLogOpenSourceAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsCommitLogOpenSourceAux</Name>
+      <Link>Classes\BusinessEventsCommitLogOpenSourceAux</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsCommitLogTableAux_Extension">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsCommitLogTableAux_Extension</Name>
+      <Link>Classes\BusinessEventsCommitLogTableAux_Extension</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsEndpointConfigurationAux_Extension">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsEndpointConfigurationAux_Extension</Name>
+      <Link>Classes\BusinessEventsEndpointConfigurationAux_Extension</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsFSTPEndpointAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsFSTPEndpointAux</Name>
+      <Link>Classes\BusinessEventsFSTPEndpointAux</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsHistoryCleanupContractAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryCleanupContractAux</Name>
+      <Link>Classes\BusinessEventsHistoryCleanupContractAux</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsHistoryCleanupControllerAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryCleanupControllerAux</Name>
+      <Link>Classes\BusinessEventsHistoryCleanupControllerAux</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsHistoryCleanupServiceAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryCleanupServiceAux</Name>
+      <Link>Classes\BusinessEventsHistoryCleanupServiceAux</Link>
+    </Content>
+    <Content Include="AxEdt\FolderNameAux">
+      <SubType>Content</SubType>
+      <Name>FolderNameAux</Name>
+      <Link>EDT Strings\FolderNameAux</Link>
+    </Content>
+    <Content Include="AxEdt\GeneratedDataAux">
+      <SubType>Content</SubType>
+      <Name>GeneratedDataAux</Name>
+      <Link>EDT Strings\GeneratedDataAux</Link>
+    </Content>
+    <Content Include="AxEdt\HistoryLimitDaysAux">
+      <SubType>Content</SubType>
+      <Name>HistoryLimitDaysAux</Name>
+      <Link>EDT Integers\HistoryLimitDaysAux</Link>
+    </Content>
+    <Content Include="AxEdt\HostnameAux">
+      <SubType>Content</SubType>
+      <Name>HostnameAux</Name>
+      <Link>EDT Strings\HostnameAux</Link>
+    </Content>
+    <Content Include="AxEdt\PortAux">
+      <SubType>Content</SubType>
+      <Name>PortAux</Name>
+      <Link>EDT Integers\PortAux</Link>
+    </Content>
+    <Content Include="AxEnumExtension\BusinessEventsEndpointType.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsEndpointType.BusinessEventsAux</Name>
+      <Link>Base Enum Extensions\BusinessEventsEndpointType.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxFormExtension\BusinessEventsEndpointConfiguration.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsEndpointConfiguration.BusinessEventsAux</Name>
+      <Link>Form Extensions\BusinessEventsEndpointConfiguration.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxFormExtension\BusinessEventsWorkspace.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspace.BusinessEventsAux</Name>
+      <Link>Form Extensions\BusinessEventsWorkspace.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxForm\BusinessEventsWorkspaceCommitLogPartAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceCommitLogPartAux</Name>
+      <Link>Forms\BusinessEventsWorkspaceCommitLogPartAux</Link>
+    </Content>
+    <Content Include="AxForm\BusinessEventsWorkspaceHistoryPartAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceHistoryPartAux</Name>
+      <Link>Forms\BusinessEventsWorkspaceHistoryPartAux</Link>
+    </Content>
+    <Content Include="AxLabelFile\BusinessEventsAux_en-US">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsAux_en-US</Name>
+      <Link>Label Files\BusinessEventsAux_en-US</Link>
+    </Content>
+    <Content Include="AxMenuExtension\SystemAdministration.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>SystemAdministration.BusinessEventsAux</Name>
+      <Link>Menu Extensions\SystemAdministration.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxMenuItemAction\BusinessEventsHistoryCleanupAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryCleanupAux</Name>
+      <Link>Action Menu Items\BusinessEventsHistoryCleanupAux</Link>
+    </Content>
+    <Content Include="AxMenuItemDisplay\BusinessEventsCommitLogOpenSourceAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsCommitLogOpenSourceAux</Name>
+      <Link>Display Menu Items\BusinessEventsCommitLogOpenSourceAux</Link>
+    </Content>
+    <Content Include="AxMenuItemDisplay\BusinessEventsWorkspaceCommitLogPartAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceCommitLogPartAux</Name>
+      <Link>Display Menu Items\BusinessEventsWorkspaceCommitLogPartAux</Link>
+    </Content>
+    <Content Include="AxMenuItemDisplay\BusinessEventsWorkspaceHistoryPartAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceHistoryPartAux</Name>
+      <Link>Display Menu Items\BusinessEventsWorkspaceHistoryPartAux</Link>
+    </Content>
+    <Content Include="AxSecurityDutyExtension\BusinessEventsSecurityDuty.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsSecurityDuty.BusinessEventsAux</Name>
+      <Link>Security Duty Extensions\BusinessEventsSecurityDuty.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxSecurityDutyExtension\BusinessEventsSecurityDutyView.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsSecurityDutyView.BusinessEventsAux</Name>
+      <Link>Security Duty Extensions\BusinessEventsSecurityDutyView.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsCommitLogOpenSourceAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsCommitLogOpenSourceAux</Name>
+      <Link>Security Privileges\BusinessEventsCommitLogOpenSourceAux</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsHistoryCleanupAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryCleanupAux</Name>
+      <Link>Security Privileges\BusinessEventsHistoryCleanupAux</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsWorkspaceCommitLogPartAuxMaintain">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceCommitLogPartAuxMaintain</Name>
+      <Link>Security Privileges\BusinessEventsWorkspaceCommitLogPartAuxMaintain</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsWorkspaceCommitLogPartAuxView">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceCommitLogPartAuxView</Name>
+      <Link>Security Privileges\BusinessEventsWorkspaceCommitLogPartAuxView</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsWorkspaceHistoryPartAuxMaintain">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceHistoryPartAuxMaintain</Name>
+      <Link>Security Privileges\BusinessEventsWorkspaceHistoryPartAuxMaintain</Link>
+    </Content>
+    <Content Include="AxSecurityPrivilege\BusinessEventsWorkspaceHistoryPartAuxVIew">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsWorkspaceHistoryPartAuxVIew</Name>
+      <Link>Security Privileges\BusinessEventsWorkspaceHistoryPartAuxVIew</Link>
+    </Content>
+    <Content Include="AxTableExtension\BusinessEventsCommitLog.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsCommitLog.BusinessEventsAux</Name>
+      <Link>Table Extensions\BusinessEventsCommitLog.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxTableExtension\BusinessEventsExceptionLog.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsExceptionLog.BusinessEventsAux</Name>
+      <Link>Table Extensions\BusinessEventsExceptionLog.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxTable\BusinessEventsHistoryAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsHistoryAux</Name>
+      <Link>Tables\BusinessEventsHistoryAux</Link>
+    </Content>
+    <Content Include="AxTable\BusinessEventsSFTPEndpointAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsSFTPEndpointAux</Name>
+      <Link>Tables\BusinessEventsSFTPEndpointAux</Link>
+    </Content>
+    <Content Include="BusinessEventsAux.en-US.label.txt">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsAux.en-US.label.txt</Name>
+      <DependentUpon>AxLabelFile\BusinessEventsAux_en-US</DependentUpon>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.Common.targets" />
+  <Import Project="$(BuildTasksDirectory)\Microsoft.Dynamics.Framework.Tools.BuildTasks.targets" />
+</Project>

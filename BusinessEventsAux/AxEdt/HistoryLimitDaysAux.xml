@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxEdt xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxEdtInt">
+	<Name>HistoryLimitDaysAux</Name>
+	<HelpText>History limit in days</HelpText>
+	<Label>History limit (days)</Label>
+	<ArrayElements />
+	<Relations />
+	<TableReferences />
+</AxEdt>

@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxForm xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>BusinessEventsWorkspaceCommitLogPartAux</Name>
+	<SourceCode>
+		<Methods xmlns="">
+			<Method>
+				<Name>classDeclaration</Name>
+				<Source><![CDATA[
+[Form]
+public class BusinessEventsWorkspaceCommitLogPartAux extends FormRun
+{
+}
+]]></Source>
+			</Method>
+			<Method>
+				<Name>refreshCallerForm</Name>
+				<Source><![CDATA[
+    private void refreshCallerForm()
+    {
+        FormRun callerForm = this.args().caller() as FormRun;
+        if (callerForm)
+        {
+            callerForm.doRefresh();
+        }
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>downloadExceptionPayload</Name>
+				<Source><![CDATA[
+    private void downloadExceptionPayload(BusinessEventsCommitLog _businessEventsCommitLog)
+    {
+        str fileName = strFmt('%1_%2.xml', _businessEventsCommitLog.BusinessEventId, _businessEventsCommitLog.LegalEntity);
+        File::SendStringAsFileToUser(_businessEventsCommitLog.GeneratedDataAux, fileName);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+		<DataSources xmlns="" />
+		<DataControls xmlns="">
+			<Control>
+				<Name>DownloadData</Name>
+				<Type>CommandButton</Type>
+				<Methods>
+					<Method>
+						<Name>clicked</Name>
+						<Source><![CDATA[
+        public void clicked()
+        {
+            super();
+
+            element.downloadExceptionPayload(BusinessEventsCommitLog);
+        }
+
+]]></Source>
+					</Method>
+				</Methods>
+			</Control>
+		</DataControls>
+		<Members xmlns="" />
+	</SourceCode>
+	<DataSources>
+		<AxFormDataSource xmlns="">
+			<Name>BusinessEventsCommitLog</Name>
+			<Table>BusinessEventsCommitLog</Table>
+			<Fields>
+				<AxFormDataSourceField>
+					<DataField>BusinessEventId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>CreatedDateTime</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>CreatedTransactionId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>EventId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>EventTime</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>GeneratedDataBWFSPS</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>LegalEntity</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>RecId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>SerializedContract</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>SerializedFilterProperties</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>SessionId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>State</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>TableId</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>TargetEndpoint</DataField>
+				</AxFormDataSourceField>
+				<AxFormDataSourceField>
+					<DataField>TaskNumber</DataField>
+				</AxFormDataSourceField>
+			</Fields>
+			<ReferencedDataSources />
+			<AllowCheck>No</AllowCheck>
+			<AllowCreate>No</AllowCreate>
+			<AllowEdit>No</AllowEdit>
+			<DataSourceLinks />
+			<DerivedDataSources />
+		</AxFormDataSource>
+	</DataSources>
+	<Design>
+		<Caption xmlns="">@BowerySPS:FBusinessEventsWorkspaceCommitLogPartCaption</Caption>
+		<Pattern xmlns="">Custom</Pattern>
+		<Style xmlns="">FormPart</Style>
+		<Controls xmlns="">
+			<AxFormControl xmlns=""
+				i:type="AxFormActionPaneControl">
+				<Name>BusinessEventsErrorsActionPane</Name>
+				<Type>ActionPane</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormButtonGroupControl">
+						<Name>ErrorsButtonGroupControl</Name>
+						<Type>ButtonGroup</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls>
+							<AxFormControl xmlns=""
+								i:type="AxFormCommandButtonControl">
+								<Name>DownloadData</Name>
+								<Type>CommandButton</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<MultiSelect>No</MultiSelect>
+								<NeedsRecord>Yes</NeedsRecord>
+								<NormalImage>Download</NormalImage>
+								<Style>Link</Style>
+								<Text>@ApplicationFoundation:DocuTemplate_DownloadButton</Text>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormMenuFunctionButtonControl">
+								<Name>BusinessEventsCommitLogOpenSourceAux</Name>
+								<Type>MenuFunctionButton</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataSource>BusinessEventsCommitLog</DataSource>
+								<MenuItemName>BusinessEventsCommitLogOpenSourceAux</MenuItemName>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormCommandButtonControl">
+								<Name>FormCommandButtonDelete</Name>
+								<Type>CommandButton</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Command>DeleteRecord</Command>
+								<NormalImage>Delete</NormalImage>
+								<Text>@ApplicationFoundation:DocuDeletedDocumentsDeleteCaption</Text>
+							</AxFormControl>
+						</Controls>
+						<Columns>5</Columns>
+						<DataSource>BusinessEventsCommitLog</DataSource>
+					</AxFormControl>
+				</Controls>
+				<DataSource>BusinessEventsCommitLog</DataSource>
+				<Style>Strip</Style>
+			</AxFormControl>
+			<AxFormControl xmlns=""
+				i:type="AxFormGridControl">
+				<Name>BusinessEventsCommitLog</Name>
+				<Type>Grid</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormGroupControl">
+						<Name>OverviewAux</Name>
+						<Type>Group</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<Controls>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_BusinessEventId</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>BusinessEventId</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_EventId</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>EventId</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormDateTimeControl">
+								<Name>OverviewAux_EventTime</Name>
+								<Type>DateTime</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>EventTime</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_FilenameAux</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>FilenameAux</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_DescriptionAux</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>DescriptionAux</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_SessionId</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>SessionId</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_LegalEntity</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>LegalEntity</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormComboBoxControl">
+								<Name>OverviewAux_State</Name>
+								<Type>ComboBox</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>State</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+								<Items />
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormIntegerControl">
+								<Name>OverviewAux_TaskNumber</Name>
+								<Type>Integer</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>TaskNumber</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormReferenceGroupControl">
+								<Name>OverviewAux_TargetEndpoint</Name>
+								<Type>ReferenceGroup</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<Controls />
+								<DataSource>BusinessEventsCommitLog</DataSource>
+								<ReferenceField>TargetEndpoint</ReferenceField>
+							</AxFormControl>
+							<AxFormControl xmlns=""
+								i:type="AxFormStringControl">
+								<Name>OverviewAux_SerializedFilterProperties</Name>
+								<Type>String</Type>
+								<FormControlExtension
+									i:nil="true" />
+								<DataField>SerializedFilterProperties</DataField>
+								<DataSource>BusinessEventsCommitLog</DataSource>
+							</AxFormControl>
+						</Controls>
+						<DataGroup>OverviewAux</DataGroup>
+						<DataSource>BusinessEventsCommitLog</DataSource>
+					</AxFormControl>
+				</Controls>
+				<DataSource>BusinessEventsCommitLog</DataSource>
+				<Style>Tabular</Style>
+			</AxFormControl>
+		</Controls>
+	</Design>
+	<Parts />
+</AxForm>

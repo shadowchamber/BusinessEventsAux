@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxMenuItemDisplay xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V1">
+	<Name>BusinessEventsWorkspaceCommitLogPartAux</Name>
+	<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+	<HelpText>@BowerySPS:DMIBusinessEventsWorkspaceCommitLogPartHelpText</HelpText>
+	<Label>@BowerySPS:DMIBusinessEventsWorkspaceCommitLogPartLabel</Label>
+	<Object>BusinessEventsWorkspaceCommitLogPartAux</Object>
+	<SubscriberAccessLevel>
+		<Read xmlns="">Allow</Read>
+	</SubscriberAccessLevel>
+</AxMenuItemDisplay>

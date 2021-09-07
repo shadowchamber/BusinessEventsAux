@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxSecurityDutyExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsSecurityDuty.BusinessEventsAux</Name>
+	<Privileges>
+		<AxSecurityPrivilegeReference>
+			<Name>BusinessEventsCommitLogOpenSourceAux</Name>
+		</AxSecurityPrivilegeReference>
+		<AxSecurityPrivilegeReference>
+			<Name>BusinessEventsHistoryCleanupAux</Name>
+		</AxSecurityPrivilegeReference>
+		<AxSecurityPrivilegeReference>
+			<Name>BusinessEventsWorkspaceCommitLogPartAuxMaintain</Name>
+		</AxSecurityPrivilegeReference>
+		<AxSecurityPrivilegeReference>
+			<Name>BusinessEventsWorkspaceHistoryPartAuxMaintain</Name>
+		</AxSecurityPrivilegeReference>
+	</Privileges>
+	<PropertyModifications />
+</AxSecurityDutyExtension>

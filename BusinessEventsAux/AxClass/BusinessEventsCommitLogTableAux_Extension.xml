@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsCommitLogTableAux_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(BusinessEventsCommitLog))]
+final public class BusinessEventsCommitLogTableAux_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>delete</Name>
+				<Source><![CDATA[
+    public void delete()
+    {
+        BusinessEventsHistoryAux history;
+
+        history.clear();
+        history.initValue();
+        
+        history.BusinessEventId = this.BusinessEventId;
+        history.EventId = this.EventId;
+        history.EventTime = this.EventTime;
+        history.SessionId = this.SessionId;
+        history.SerializedContract = this.SerializedContract;
+        history.LegalEntity = this.LegalEntity;
+        history.State = this.State;
+        history.TaskNumber = this.TaskNumber;
+        history.TargetEndpoint = this.TargetEndpoint;
+        history.SerializedFilterProperties = this.SerializedFilterProperties;
+        history.CDSContext = this.CDSContext;
+        //history.GeneratedDataBWFSPS = this.GeneratedDataBWFSPS;
+        history.DescriptionAux = this.DescriptionAux;
+        history.RefTableIdAux = this.RefTableIdAux;
+        history.RefRecIdAux = this.RefRecIdAux;
+
+        history.insert();
+
+        next delete();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
