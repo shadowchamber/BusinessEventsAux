@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxSecurityPrivilege xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsCommitLogOpenSourceAux</Name>
+	<Description>@BowerySPS:PBusinessEventsCommitLogOpenSourceDescription</Description>
+	<Label>@BowerySPS:PBusinessEventsCommitLogOpenSourceLabel</Label>
+	<DataEntityPermissions />
+	<DirectAccessPermissions />
+	<EntryPoints>
+		<AxSecurityEntryPointReference>
+			<Name>BusinessEventsCommitLogOpenSourceAux</Name>
+			<Grant>
+				<Read>Allow</Read>
+			</Grant>
+			<ObjectName>BusinessEventsCommitLogOpenSourceAux</ObjectName>
+			<ObjectType>MenuItemDisplay</ObjectType>
+			<Forms />
+		</AxSecurityEntryPointReference>
+	</EntryPoints>
+	<FormControlOverrides />
+</AxSecurityPrivilege>

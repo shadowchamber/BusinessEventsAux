@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsFSTPEndpointAux</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// BusinessEventsEndpoint for FSTP
+/// </summary>
+[BusinessEventsEndpoint(BusinessEventsEndpointType::SFTP)]
+public class BusinessEventsFSTPEndpointAux implements IBusinessEventsEndpoint // extends BusinessEventsEndpointBase
+{
+    boolean hasErrors = false;
+    System.Exception lastException;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>send</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Send payload to the designated endpoint
+    /// </summary>
+    /// <param name = "_payload">The payload to be sent</param>
+    /// <param name = "_context">The context of the payload</param>
+    /// <returns>true: successfully sent the payload; otherwise false</returns>
+    public boolean send(str _payload, BusinessEventsEndpointPayloadContext _context)
+    {
+        if (_context is BusinessEventsCommitLogPayloadContext)
+        {
+            var context = _context as BusinessEventsCommitLogPayloadContext;
+
+            try
+            {
+                BusinessEventsCommitLog commitLog = BusinessEventsCommitLog::findFromEventId(context.parmEventId());
+                BusinessEventsSFTPEndpointAux endpoint;
+
+                select firstonly endpoint
+                    where endpoint.RecId == commitLog.TargetEndpoint;
+
+                if (endpoint.RecId == 0)
+                {
+                    select firstonly endpoint
+                        where endpoint.Type == BusinessEventsEndpointType::SFTP;
+                }
+
+                str contents = commitLog.GeneratedDataAux == '' ? commitLog.SerializedContract : commitLog.GeneratedDataAux;
+
+                if (contents == '')
+                {
+                    return true;
+                }
+
+                ClientSSHNet sftp = ClientSSHNet::constructFromParameters(
+                    endpoint.Hostname, 
+                    endpoint.Port, 
+                    endpoint.UserName, 
+                    endpoint.Password
+                );
+
+                utcDateTime time = DateTimeUtil::getSystemDateTime();
+            
+                str filePathOnServer = endpoint.FolderName + '/' + (commitLog.FilenameAux == '' ? strFmt("data%1.json", commitLog.RecId) : commitLog.FilenameAux);
+
+                sftp.send(filePathOnServer, contents);
+            }
+            catch 
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>getException</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// When sending the payload fails it returns the exception that caused the failure.
+    /// </summary>
+    /// <returns>An exception if sending the payload failed, null otherwise.</returns>
+    public System.Exception getException()
+    {
+        return this.lastException; 
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>initialize</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Initialize the endpoint with the given <c>BusinessEventsEndpoint</c> table buffer
+    /// </summary>
+    /// <param name = "_endpoint">The <c>BusinessEventsEndpoint</c> table buffer</param>
+    /// <param name = "_forceCreate">Boolean flag indicating if the initialization of the endpoint should force recreation of assets, as opposed to looking up from a cache</param>
+    public void initialize(BusinessEventsEndpoint _endpoint, boolean _forceCreate)
+    {
+        if (!(_endpoint is BusinessEventsSFTPEndpointAux))
+        {
+            BusinessEventsEndpointManager::logUnknownEndpointRecord(tableStr(BusinessEventsSFTPEndpointAux), _endpoint.RecId);
+        }
+
+        BusinessEventsSFTPEndpointAux businessEventsEndpoint = _endpoint as BusinessEventsSFTPEndpointAux;
+        var hostnameField = businessEventsEndpoint.Hostname;
+
+        if (hostnameField == '')
+        {
+            throw warning(strFmt(strLRTrim("@BusinessEvents:MissingAdapterConstructorParameter"), classStr(BusinessEventsFSTPEndpointAux), varStr(hostnameField)));
+        }
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

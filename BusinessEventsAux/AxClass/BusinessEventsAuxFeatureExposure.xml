@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsAuxFeatureExposure</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+using KernelStateProvider = Microsoft.Dynamics.ApplicationPlatform.FeatureExposure.FeatureStateProvider;
+
+/// <summary>
+/// Feature exposure.
+/// </summary>
+public static class BusinessEventsAuxFeatureExposure
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>isEnabled</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Is feature enabled.
+    /// </summary>
+    /// <returns>true if the feature enabled.</returns>
+    public static boolean isEnabled()
+    {
+        return KernelStateProvider::IsFeatureEnabled(BusinessEventsAuxFeature::instance());
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
