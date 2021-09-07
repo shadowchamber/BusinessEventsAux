@@ -1,0 +1,14 @@
+﻿EDTGeneratedDataLabel=Generated data
+EDTGeneratedDataHelpText=Generated data value
+BEEXml=Xml
+BEESFTP=SFTP
+EDTHostnameLabel=Hostname
+EDTHostnameHelpText=Hostname value
+EDTPortLabel=Port
+EDTPortHelpText=Port number
+EDTFolderNameLabel=Folder Name
+EDTFolderNameHelpText=Folder Name Value
+BESerializerTypeLabel=Serializer type
+BESerializerTypeHelpText=Serializer type value
+BEESerializerTypeJSON=JSON
+BEESerializerTypeXML=XML

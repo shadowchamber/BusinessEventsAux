@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxLabelFile xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsAux_en-US</Name>
+	<LabelContentFileName>BusinessEventsAux.en-US.label.txt</LabelContentFileName>
+	<LabelFileId>BusinessEventsAux</LabelFileId>
+	<RelativeUriInModelStore>BusinessEventsAux\BusinessEventsAux\AxLabelFile\LabelResources\en-US\BusinessEventsAux.en-US.label.txt</RelativeUriInModelStore>
+</AxLabelFile>

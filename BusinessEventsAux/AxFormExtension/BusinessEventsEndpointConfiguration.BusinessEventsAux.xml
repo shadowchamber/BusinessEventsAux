@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxFormExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns="Microsoft.Dynamics.AX.Metadata.V6">
+	<Name>BusinessEventsEndpointConfiguration.BusinessEventsAux</Name>
+	<ControlModifications />
+	<Controls>
+		<AxFormExtensionControl xmlns="">
+			<Name>FormExtensionControl1l0sfngx1</Name>
+			<FormControl xmlns=""
+				i:type="AxFormGroupControl">
+				<Name>SFTPEndpointFields</Name>
+				<Type>Group</Type>
+				<FormControlExtension
+					i:nil="true" />
+				<Controls>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>SFTPEndpointFields_Hostname</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>Hostname</DataField>
+						<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>SFTPEndpointFields_UserName</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>UserName</DataField>
+						<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>SFTPEndpointFields_Password</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>Password</DataField>
+						<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormIntegerControl">
+						<Name>SFTPEndpointFields_Port</Name>
+						<Type>Integer</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>Port</DataField>
+						<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+					</AxFormControl>
+					<AxFormControl xmlns=""
+						i:type="AxFormStringControl">
+						<Name>SFTPEndpointFields_FolderName</Name>
+						<Type>String</Type>
+						<FormControlExtension
+							i:nil="true" />
+						<DataField>FolderName</DataField>
+						<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+					</AxFormControl>
+				</Controls>
+				<DataGroup>SFTPEndpointFields</DataGroup>
+				<DataSource>BusinessEventsEndpoint_BusinessEventsSFTPEndpointAux</DataSource>
+			</FormControl>
+			<Parent>EndpointFieldsGroup</Parent>
+		</AxFormExtensionControl>
+	</Controls>
+	<DataSourceModifications />
+	<DataSourceReferences />
+	<DataSources />
+	<Parts />
+	<PropertyModifications />
+</AxFormExtension>
