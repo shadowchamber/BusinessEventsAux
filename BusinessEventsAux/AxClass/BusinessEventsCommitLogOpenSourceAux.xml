@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsCommitLogOpenSourceAux</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+/// <summary>
+/// Open source document on busines event commit log.
+/// </summary>
+public class BusinessEventsCommitLogOpenSourceAux
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>main</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Runs the class with the specified arguments.
+    /// </summary>
+    /// <param name = "_args">The specified arguments.</param>
+    public static void main(Args _args)
+    {
+        BusinessEventsCommitLogOpenSourceAux openSourceAux;
+
+        openSourceAux = new BusinessEventsCommitLogOpenSourceAux();
+    
+        openSourceAux.run(_args);
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>validate</Name>
+				<Source><![CDATA[
+    boolean validate()
+    {
+        return true;
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>run</Name>
+				<Source><![CDATA[
+    public void run(Args _args)
+    {
+        BusinessEventsCommitLog businessEventsCommitLog;
+
+        businessEventsCommitLog = _args.record();
+
+        if (businessEventsCommitLog.RecId == 0)
+        {
+            throw error("@BowerySPS:ERecordIsNotSpecified");
+        }
+
+        if (businessEventsCommitLog.BusinessEventId != classStr(SalesInvoicePostedBusinessEvent)
+            || businessEventsCommitLog.RefRecIdAux == 0)
+        {
+            return;
+        }
+
+        CustInvoiceJour custInvoiceJour;
+
+        select firstonly custInvoiceJour
+            where custInvoiceJour.TableId == businessEventsCommitLog.RefTableIdAux
+                && custInvoiceJour.RecId == businessEventsCommitLog.RefRecIdAux;
+
+        if (custInvoiceJour.RecId == 0)
+        {
+            return;
+        }
+
+        if (!this.validate())
+        {
+            return;
+        }
+
+        Args args = new Args();
+
+        args.record(custInvoiceJour);
+
+        args.caller(_args.caller());
+
+        new MenuFunction(menuItemDisplayStr(CustInvoiceJournal), MenuItemType::Display).run(args);
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

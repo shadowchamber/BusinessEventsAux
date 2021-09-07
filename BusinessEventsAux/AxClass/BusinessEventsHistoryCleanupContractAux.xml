@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsHistoryCleanupContractAux</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[DataContractAttribute]
+public class BusinessEventsHistoryCleanupContractAux
+{
+    private HistoryLimitDaysAux historyLimit;
+
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>parmHistoryLimit</Name>
+				<Source><![CDATA[
+    public HistoryLimitDaysAux parmHistoryLimit(HistoryLimitDaysAux _historyLimit = historyLimit)
+    {
+        historyLimit = _historyLimit;
+
+        return historyLimit;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

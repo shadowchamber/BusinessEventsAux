@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsHistoryCleanupServiceAux</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class BusinessEventsHistoryCleanupServiceAux
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>process</Name>
+				<Source><![CDATA[
+    public void process(BusinessEventsHistoryCleanupContractAux _contract)
+    {
+        BusinessEventsHistoryAux history;
+        utcdatetime cutDatetime = DateTimeUtil::addDays(DateTimeUtil::getSystemDateTime(), - _contract.parmHistoryLimit());
+
+        ttsbegin;
+
+        delete_from history
+            where history.EventTime < cutDatetime;
+            
+        ttscommit;
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>
