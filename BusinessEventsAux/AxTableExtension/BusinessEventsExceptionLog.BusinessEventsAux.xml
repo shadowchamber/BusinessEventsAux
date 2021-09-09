@@ -17,6 +17,29 @@
 			<ExtendedDataType>Description</ExtendedDataType>
 			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt">
+			<Name>RefTableIdAux</Name>
+			<ExtendedDataType>RefTableId</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>RefRecIdAux</Name>
+			<ExtendedDataType>RefRecId</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>GeneratedDataAux</Name>
+			<ExtendedDataType>GeneratedDataAux</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldUtcDateTime">
+			<Name>SendDateTimeAux</Name>
+			<ExtendedDataType>SendDateTimeAux</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

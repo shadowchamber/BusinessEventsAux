@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxEdt xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxEdtUtcDateTime">
+	<Name>SendDateTimeAux</Name>
+	<HelpText>Send date time value</HelpText>
+	<Label>Send date time</Label>
+	<ArrayElements />
+	<Relations />
+	<TableReferences />
+</AxEdt>

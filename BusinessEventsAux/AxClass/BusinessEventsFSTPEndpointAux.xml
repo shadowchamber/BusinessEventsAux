@@ -32,7 +32,7 @@ public class BusinessEventsFSTPEndpointAux implements IBusinessEventsEndpoint //
 
             try
             {
-                BusinessEventsCommitLog commitLog = BusinessEventsCommitLog::findFromEventId(context.parmEventId());
+                BusinessEventsCommitLog commitLog = BusinessEventsCommitLog::findFromEventId(context.parmEventId(), true);
                 BusinessEventsSFTPEndpointAux endpoint;
 
                 select firstonly endpoint
@@ -63,6 +63,13 @@ public class BusinessEventsFSTPEndpointAux implements IBusinessEventsEndpoint //
                 str filePathOnServer = endpoint.FolderName + '/' + (commitLog.FilenameAux == '' ? strFmt("data%1.json", commitLog.RecId) : commitLog.FilenameAux);
 
                 sftp.send(filePathOnServer, contents);
+
+                ttsbegin;
+
+                commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+                commitLog.update();
+
+                ttscommit;
             }
             catch 
             {

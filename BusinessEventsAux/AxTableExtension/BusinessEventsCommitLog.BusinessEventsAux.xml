@@ -75,6 +75,16 @@
 			<ExtendedDataType>GeneratedDataAux</ExtendedDataType>
 			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldUtcDateTime">
+			<Name>SendDateTimeAux</Name>
+			<ExtendedDataType>SendDateTimeAux</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ExceptionMessage</Name>
+			<ExtendedDataType>BusinessEventsExceptionMessage</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxClass xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsExceptionLogTableAux_Extension</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+[ExtensionOf(tableStr(BusinessEventsExceptionLog))]
+final public class BusinessEventsExceptionLogTableAux_Extension
+{
+}
+]]></Declaration>
+		<Methods>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    public void insert()
+    {
+        BusinessEventsCommitLog commitLog;
+
+        select firstonly commitLog
+            where commitLog.BusinessEventId == this.BusinessEventId
+                && commitLog.EventId == this.EventId
+                && commitLog.LegalEntity == this.LegalEntity;
+
+        if (commitLog.RecId != 0)
+        {
+            this.RefRecIdAux = commitLog.RefRecIdAux;
+            this.RefTableIdAux = commitLog.RefTableIdAux;
+            this.DescriptionAux = commitLog.DescriptionAux;
+            this.GeneratedDataAux = commitLog.GeneratedDataAux;
+            this.State = BusinessEventsSendingState::Failed;
+            this.ExceptionMessage = commitLog.ExceptionMessage;
+        }
+
+        next insert();
+    }
+
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+</AxClass>

@@ -14,30 +14,96 @@ final public class BusinessEventsCommitLogTableAux_Extension
 				<Source><![CDATA[
     public void delete()
     {
+        BusinessEventsCommitLog::addToHistory(this);
+
+        next delete();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    public void insert()
+    {
+        BusinessEventsExceptionLog exceptionLog;
+
+        select firstonly exceptionLog
+            where exceptionLog.BusinessEventId == this.BusinessEventId
+                && exceptionLog.EventId == this.EventId
+                && exceptionLog.LegalEntity == this.LegalEntity;
+
+        if (exceptionLog.RecId != 0)
+        {
+            this.RefRecIdAux = exceptionLog.RefRecIdAux;
+            this.RefTableIdAux = exceptionLog.RefTableIdAux;
+            this.DescriptionAux = exceptionLog.DescriptionAux;
+            this.GeneratedDataAux = exceptionLog.GeneratedDataAux;
+            this.State = BusinessEventsSendingState::Waiting;
+            this.ExceptionMessage = exceptionLog.ExceptionMessage;
+        }
+
+        next insert();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>addToHistory</Name>
+				<Source><![CDATA[
+    public static void addToHistory(BusinessEventsCommitLog _commitLog)
+    {
         BusinessEventsHistoryAux history;
 
         history.clear();
         history.initValue();
         
-        history.BusinessEventId = this.BusinessEventId;
-        history.EventId = this.EventId;
-        history.EventTime = this.EventTime;
-        history.SessionId = this.SessionId;
-        history.SerializedContract = this.SerializedContract;
-        history.LegalEntity = this.LegalEntity;
-        history.State = this.State;
-        history.TaskNumber = this.TaskNumber;
-        history.TargetEndpoint = this.TargetEndpoint;
-        history.SerializedFilterProperties = this.SerializedFilterProperties;
-        history.CDSContext = this.CDSContext;
-        //history.GeneratedDataBWFSPS = this.GeneratedDataBWFSPS;
-        history.DescriptionAux = this.DescriptionAux;
-        history.RefTableIdAux = this.RefTableIdAux;
-        history.RefRecIdAux = this.RefRecIdAux;
+        history.BusinessEventId = _commitLog.BusinessEventId;
+        history.EventId = _commitLog.EventId;
+        history.EventTime = _commitLog.EventTime;
+        history.SessionId = _commitLog.SessionId;
+        history.SerializedContract = _commitLog.SerializedContract;
+        history.LegalEntity = _commitLog.LegalEntity;
+        history.TaskNumber = _commitLog.TaskNumber;
+        history.TargetEndpoint = _commitLog.TargetEndpoint;
+        history.SerializedFilterProperties = _commitLog.SerializedFilterProperties;
+        history.CDSContext = _commitLog.CDSContext;
+        history.GeneratedDataAux = _commitLog.GeneratedDataAux;
+        history.DescriptionAux = _commitLog.DescriptionAux;
+        history.RefTableIdAux = _commitLog.RefTableIdAux;
+        history.RefRecIdAux = _commitLog.RefRecIdAux;
+        history.State = BusinessEventsSendingState::Sent;
+        history.ExceptionMessage = _commitLog.ExceptionMessage;
 
         history.insert();
+    }
 
-        next delete();
+]]></Source>
+			</Method>
+			<Method>
+				<Name>deleteForEventIdAndEndpoint</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Deletes <c>BusinessEventsCommitLog</c> records for the given event id and endpoint record
+    /// </summary>
+    /// <param name = "_eventId">The event instance id</param>
+    /// <param name = "_endpointRecId">The target endpoint RecId</param>
+    public static void deleteForEventIdAndEndpoint(BusinessEventsInstanceId _eventId, BusinessEventsEndpointRecId _endpointRecId)
+    {
+        BusinessEventsCommitLog commitLog;
+        
+        ttsbegin;
+
+        while select commitLog
+            where commitLog.EventId == _eventId
+                && commitLog.TargetEndpoint == _endpointRecId
+        {
+            BusinessEventsCommitLog::addToHistory(commitLog);
+        }
+        
+        ttscommit;
+
+        next deleteForEventIdAndEndpoint(_eventId, _endpointRecId);
     }
 
 ]]></Source>

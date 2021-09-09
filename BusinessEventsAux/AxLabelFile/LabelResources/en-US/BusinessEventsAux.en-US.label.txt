@@ -12,3 +12,5 @@ BESerializerTypeLabel=Serializer type
 BESerializerTypeHelpText=Serializer type value
 BEESerializerTypeJSON=JSON
 BEESerializerTypeXML=XML
+FLabel=Business events auxiliary
+FSummary=Business events auxiliary feature
