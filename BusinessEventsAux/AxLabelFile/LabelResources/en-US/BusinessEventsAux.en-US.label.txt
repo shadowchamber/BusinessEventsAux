@@ -14,3 +14,5 @@ BEESerializerTypeJSON=JSON
 BEESerializerTypeXML=XML
 FLabel=Business events auxiliary
 FSummary=Business events auxiliary feature
+EDTSendDateTimeLabel=Send date time
+EDTSendDateTimeHelpText=Send date time value

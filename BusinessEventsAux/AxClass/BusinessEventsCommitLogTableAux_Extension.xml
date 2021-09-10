@@ -41,6 +41,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
             this.GeneratedDataAux = exceptionLog.GeneratedDataAux;
             this.State = BusinessEventsSendingState::Waiting;
             this.ExceptionMessage = exceptionLog.ExceptionMessage;
+            this.FilenameAux = exceptionLog.FilenameAux;
         }
 
         next insert();
@@ -74,6 +75,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
         history.RefRecIdAux = _commitLog.RefRecIdAux;
         history.State = BusinessEventsSendingState::Sent;
         history.ExceptionMessage = _commitLog.ExceptionMessage;
+        history.FilenameAux = _commitLog.FilenameAux;
 
         history.insert();
     }

@@ -2,8 +2,8 @@
 <AxEdt xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
 	i:type="AxEdtUtcDateTime">
 	<Name>SendDateTimeAux</Name>
-	<HelpText>Send date time value</HelpText>
-	<Label>Send date time</Label>
+	<HelpText>@BusinessEventsAux:EDTSendDateTimeHelpText</HelpText>
+	<Label>@BusinessEventsAux:EDTSendDateTimeLabel</Label>
 	<ArrayElements />
 	<Relations />
 	<TableReferences />

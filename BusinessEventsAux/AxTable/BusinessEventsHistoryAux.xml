@@ -142,6 +142,9 @@ public class BusinessEventsHistoryAux extends common
 					<DataField>State</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
+					<DataField>FilenameAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
 					<DataField>TaskNumber</DataField>
 				</AxTableFieldGroupField>
 				<AxTableFieldGroupField>
@@ -253,6 +256,12 @@ public class BusinessEventsHistoryAux extends common
 			i:type="AxTableFieldString">
 			<Name>ExceptionMessage</Name>
 			<ExtendedDataType>BusinessEventsExceptionMessage</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>FilenameAux</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
 		</AxTableField>
 	</Fields>
 	<FullTextIndexes />

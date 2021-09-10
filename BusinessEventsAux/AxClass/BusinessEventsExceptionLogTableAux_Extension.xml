@@ -29,6 +29,7 @@ final public class BusinessEventsExceptionLogTableAux_Extension
             this.GeneratedDataAux = commitLog.GeneratedDataAux;
             this.State = BusinessEventsSendingState::Failed;
             this.ExceptionMessage = commitLog.ExceptionMessage;
+            this.FilenameAux = commitLog.FilenameAux;
         }
 
         next insert();
