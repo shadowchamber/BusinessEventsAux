@@ -16,3 +16,5 @@ FLabel=Business events auxiliary
 FSummary=Business events auxiliary feature
 EDTSendDateTimeLabel=Send date time
 EDTSendDateTimeHelpText=Send date time value
+AMIBEHistoryCleanupLabel=Business events history cleanup
+AMIBEHistoryCleanupHelpText=Business events history cleanup job

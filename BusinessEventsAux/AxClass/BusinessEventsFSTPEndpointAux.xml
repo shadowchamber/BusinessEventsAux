@@ -63,13 +63,6 @@ public class BusinessEventsFSTPEndpointAux implements IBusinessEventsEndpoint //
                 str filePathOnServer = endpoint.FolderName + '/' + (commitLog.FilenameAux == '' ? strFmt("data%1.json", commitLog.RecId) : commitLog.FilenameAux);
 
                 sftp.send(filePathOnServer, contents);
-
-                ttsbegin;
-
-                commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
-                commitLog.update();
-
-                ttscommit;
             }
             catch 
             {

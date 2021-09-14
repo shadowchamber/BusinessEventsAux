@@ -28,11 +28,68 @@ final public class BusinessEventsExceptionLogTableAux_Extension
             this.DescriptionAux = commitLog.DescriptionAux;
             this.GeneratedDataAux = commitLog.GeneratedDataAux;
             this.State = BusinessEventsSendingState::Failed;
-            this.ExceptionMessage = commitLog.ExceptionMessage;
+            this.ExceptionMessage = commitLog.ExceptionMessage == '' ? this.ExceptionMessage : commitLog.ExceptionMessage;
             this.FilenameAux = commitLog.FilenameAux;
         }
 
         next insert();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>delete</Name>
+				<Source><![CDATA[
+    public void delete()
+    {
+        BusinessEventsExceptionLog::addToHistory(this);
+
+        next delete();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>addToHistory</Name>
+				<Source><![CDATA[
+    public static void addToHistory(BusinessEventsExceptionLog _exceptionLog)
+    {
+        BusinessEventsCommitLog commitLog;
+
+        select firstonly commitLog
+            where commitLog.BusinessEventId == _exceptionLog.BusinessEventId
+                && commitLog.EventId == _exceptionLog.EventId
+                && commitLog.LegalEntity == _exceptionLog.LegalEntity;
+
+        if (commitLog.RecId != 0)
+        {
+            return;
+        }
+
+        BusinessEventsHistoryAux history;
+
+        history.clear();
+        history.initValue();
+        
+        history.BusinessEventId = _exceptionLog.BusinessEventId;
+        history.EventId = _exceptionLog.EventId;
+        history.EventTime = _exceptionLog.EventTime;
+        history.SessionId = _exceptionLog.SessionId;
+        history.SerializedContract = _exceptionLog.SerializedContract;
+        history.LegalEntity = _exceptionLog.LegalEntity;
+        //history.TaskNumber = _exceptionLog.TaskNumber;
+        history.TargetEndpoint = _exceptionLog.TargetEndpoint;
+        history.SerializedFilterProperties = _exceptionLog.SerializedFilterProperties;
+        history.CDSContext = _exceptionLog.CDSContext;
+        history.GeneratedDataAux = _exceptionLog.GeneratedDataAux;
+        history.DescriptionAux = _exceptionLog.DescriptionAux;
+        history.RefTableIdAux = _exceptionLog.RefTableIdAux;
+        history.RefRecIdAux = _exceptionLog.RefRecIdAux;
+        history.State = BusinessEventsSendingState::Failed;
+        history.ExceptionMessage = _exceptionLog.ExceptionMessage;
+        history.FilenameAux = _exceptionLog.FilenameAux;
+
+        history.insert();
     }
 
 ]]></Source>

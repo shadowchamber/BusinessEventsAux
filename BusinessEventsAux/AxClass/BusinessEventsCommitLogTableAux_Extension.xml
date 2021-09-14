@@ -54,6 +54,18 @@ final public class BusinessEventsCommitLogTableAux_Extension
 				<Source><![CDATA[
     public static void addToHistory(BusinessEventsCommitLog _commitLog)
     {
+        BusinessEventsExceptionLog exceptionLog;
+
+        select firstonly exceptionLog
+            where exceptionLog.BusinessEventId == _commitLog.BusinessEventId
+                && exceptionLog.EventId == _commitLog.EventId
+                && exceptionLog.LegalEntity == _commitLog.LegalEntity;
+
+        if (exceptionLog.RecId != 0)
+        {
+            return;
+        }
+
         BusinessEventsHistoryAux history;
 
         history.clear();
@@ -76,6 +88,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
         history.State = BusinessEventsSendingState::Sent;
         history.ExceptionMessage = _commitLog.ExceptionMessage;
         history.FilenameAux = _commitLog.FilenameAux;
+        history.SendDateTimeAux = _commitLog.SendDateTimeAux;
 
         history.insert();
     }
@@ -94,16 +107,36 @@ final public class BusinessEventsCommitLogTableAux_Extension
     {
         BusinessEventsCommitLog commitLog;
         
-        ttsbegin;
-
-        while select commitLog
-            where commitLog.EventId == _eventId
-                && commitLog.TargetEndpoint == _endpointRecId
+        if (_endpointRecId != 0)
         {
-            BusinessEventsCommitLog::addToHistory(commitLog);
-        }
+            ttsbegin;
+
+            select firstonly commitLog
+                where commitLog.EventId == _eventId
+                    && commitLog.TargetEndpoint == _endpointRecId;
+
+            if (commitLog.RecId != 0)
+            {
+                commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+                BusinessEventsCommitLog::addToHistory(commitLog);
+            }
+            else
+            {
+                select firstonly commitLog
+                    where commitLog.EventId == _eventId;
+
+                if (commitLog.RecId != 0)
+                {
+                    commitLog.TargetEndpoint = _endpointRecId;
+                    commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+                    BusinessEventsCommitLog::addToHistory(commitLog);
+                }
+            }
         
-        ttscommit;
+            ttscommit;
+        }
 
         next deleteForEventIdAndEndpoint(_eventId, _endpointRecId);
     }
