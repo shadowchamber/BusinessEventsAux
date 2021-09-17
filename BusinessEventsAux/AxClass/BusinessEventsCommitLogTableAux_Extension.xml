@@ -14,30 +14,149 @@ final public class BusinessEventsCommitLogTableAux_Extension
 				<Source><![CDATA[
     public void delete()
     {
+        BusinessEventsCommitLog::addToHistory(this);
+
+        next delete();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>insert</Name>
+				<Source><![CDATA[
+    public void insert()
+    {
+        BusinessEventsExceptionLog exceptionLog;
+
+        select firstonly exceptionLog
+            where exceptionLog.BusinessEventId == this.BusinessEventId
+                && exceptionLog.EventId == this.EventId
+                && exceptionLog.LegalEntity == this.LegalEntity;
+
+        if (exceptionLog.RecId != 0)
+        {
+            this.RefRecIdAux = exceptionLog.RefRecIdAux;
+            this.RefTableIdAux = exceptionLog.RefTableIdAux;
+            this.DescriptionAux = exceptionLog.DescriptionAux;
+            this.GeneratedDataAux = exceptionLog.GeneratedDataAux;
+            this.State = BusinessEventsSendingState::Waiting;
+            this.ExceptionMessage = exceptionLog.ExceptionMessage;
+            this.FilenameAux = exceptionLog.FilenameAux;
+        }
+
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+        next insert();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    public void update()
+    {
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+        next update();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>addToHistory</Name>
+				<Source><![CDATA[
+    public static void addToHistory(BusinessEventsCommitLog _commitLog)
+    {
+        BusinessEventsExceptionLog exceptionLog;
+
+        select firstonly exceptionLog
+            where exceptionLog.BusinessEventId == _commitLog.BusinessEventId
+                && exceptionLog.EventId == _commitLog.EventId
+                && exceptionLog.LegalEntity == _commitLog.LegalEntity;
+
+        if (exceptionLog.RecId != 0)
+        {
+            return;
+        }
+
         BusinessEventsHistoryAux history;
 
         history.clear();
         history.initValue();
-        
-        history.BusinessEventId = this.BusinessEventId;
-        history.EventId = this.EventId;
-        history.EventTime = this.EventTime;
-        history.SessionId = this.SessionId;
-        history.SerializedContract = this.SerializedContract;
-        history.LegalEntity = this.LegalEntity;
-        history.State = this.State;
-        history.TaskNumber = this.TaskNumber;
-        history.TargetEndpoint = this.TargetEndpoint;
-        history.SerializedFilterProperties = this.SerializedFilterProperties;
-        history.CDSContext = this.CDSContext;
-        //history.GeneratedDataBWFSPS = this.GeneratedDataBWFSPS;
-        history.DescriptionAux = this.DescriptionAux;
-        history.RefTableIdAux = this.RefTableIdAux;
-        history.RefRecIdAux = this.RefRecIdAux;
+
+        history.BusinessEventId = _commitLog.BusinessEventId;
+        history.EventId = _commitLog.EventId;
+        history.EventTime = _commitLog.EventTime;
+        history.SessionId = _commitLog.SessionId;
+        history.SerializedContract = _commitLog.SerializedContract;
+        history.LegalEntity = _commitLog.LegalEntity;
+        history.TaskNumber = _commitLog.TaskNumber;
+        history.TargetEndpoint = _commitLog.TargetEndpoint;
+        history.SerializedFilterProperties = _commitLog.SerializedFilterProperties;
+        history.CDSContext = _commitLog.CDSContext;
+        history.GeneratedDataAux = _commitLog.GeneratedDataAux;
+        history.DescriptionAux = _commitLog.DescriptionAux;
+        history.RefTableIdAux = _commitLog.RefTableIdAux;
+        history.RefRecIdAux = _commitLog.RefRecIdAux;
+        history.State = _commitLog.State == BusinessEventsSendingState::Waiting ? BusinessEventsSendingState::Cancelled : _commitLog.State;
+        history.ExceptionMessage = _commitLog.ExceptionMessage;
+        history.FilenameAux = _commitLog.FilenameAux;
+        history.SendDateTimeAux = _commitLog.SendDateTimeAux;
 
         history.insert();
+    }
 
-        next delete();
+]]></Source>
+			</Method>
+			<Method>
+				<Name>deleteForEventIdAndEndpoint</Name>
+				<Source><![CDATA[
+    /// <summary>
+    /// Deletes <c>BusinessEventsCommitLog</c> records for the given event id and endpoint record
+    /// </summary>
+    /// <param name = "_eventId">The event instance id</param>
+    /// <param name = "_endpointRecId">The target endpoint RecId</param>
+    public static void deleteForEventIdAndEndpoint(BusinessEventsInstanceId _eventId, BusinessEventsEndpointRecId _endpointRecId)
+    {
+        BusinessEventsCommitLog commitLog;
+        
+        if (_endpointRecId != 0)
+        {
+            ttsbegin;
+
+            select firstonly commitLog
+                where commitLog.EventId == _eventId
+                    && commitLog.TargetEndpoint == _endpointRecId;
+
+            if (commitLog.RecId != 0)
+            {
+                commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+                commitLog.State = BusinessEventsSendingState::Sent;
+
+                BusinessEventsCommitLog::addToHistory(commitLog);
+            }
+            else
+            {
+                select firstonly commitLog
+                    where commitLog.EventId == _eventId;
+
+                if (commitLog.RecId != 0)
+                {
+                    commitLog.TargetEndpoint = _endpointRecId;
+                    commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+                    commitLog.State = BusinessEventsSendingState::Sent;
+
+                    BusinessEventsCommitLog::addToHistory(commitLog);
+                }
+            }
+        
+            ttscommit;
+        }
+
+        next deleteForEventIdAndEndpoint(_eventId, _endpointRecId);
     }
 
 ]]></Source>

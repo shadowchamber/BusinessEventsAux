@@ -17,11 +17,63 @@
 			<ExtendedDataType>Description</ExtendedDataType>
 			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt">
+			<Name>RefTableIdAux</Name>
+			<ExtendedDataType>RefTableId</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldInt64">
+			<Name>RefRecIdAux</Name>
+			<ExtendedDataType>RefRecId</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>GeneratedDataAux</Name>
+			<ExtendedDataType>GeneratedDataAux</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldUtcDateTime">
+			<Name>SendDateTimeAux</Name>
+			<ExtendedDataType>SendDateTimeAux</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>FilenameAux</Name>
+			<ExtendedDataType>Name</ExtendedDataType>
+			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ModifiedByAux</Name>
+			<ExtendedDataType>ModifiedByAux</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldUtcDateTime">
+			<Name>ModifiedDateTimeAux</Name>
+			<ExtendedDataType>ModifiedDateTimeAux</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />
 	<Mappings />
-	<PropertyModifications />
+	<PropertyModifications>
+		<AxPropertyModification>
+			<Name>CreatedBy</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+		<AxPropertyModification>
+			<Name>ModifiedBy</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+		<AxPropertyModification>
+			<Name>ModifiedDateTime</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+	</PropertyModifications>
 	<RelationExtensions />
 	<RelationModifications />
 	<Relations />
