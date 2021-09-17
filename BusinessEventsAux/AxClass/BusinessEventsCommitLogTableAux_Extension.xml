@@ -86,7 +86,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
 
         history.clear();
         history.initValue();
-        
+
         history.BusinessEventId = _commitLog.BusinessEventId;
         history.EventId = _commitLog.EventId;
         history.EventTime = _commitLog.EventTime;
