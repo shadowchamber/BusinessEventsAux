@@ -3,6 +3,9 @@
 	<Name>BusinessEventsHistoryCleanupServiceAux</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
+/// <summary>
+/// BusinessEventsHistoryCleanupServiceAux servicre class.
+/// </summary>
 public class BusinessEventsHistoryCleanupServiceAux
 {
 }
@@ -11,6 +14,10 @@ public class BusinessEventsHistoryCleanupServiceAux
 			<Method>
 				<Name>process</Name>
 				<Source><![CDATA[
+    /// <summary>
+    /// entry point.
+    /// </summary>
+    /// <param name = "_contract">cont</param>
     public void process(BusinessEventsHistoryCleanupContractAux _contract)
     {
         BusinessEventsHistoryAux history;
