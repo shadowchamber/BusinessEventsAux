@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxEnumExtension xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsSendingState.BusinessEventsAux</Name>
+	<EnumValues>
+		<AxEnumValue>
+			<Name>Failed</Name>
+			<Label>@AccountsPayable:FailedStatus</Label>
+		</AxEnumValue>
+		<AxEnumValue>
+			<Name>Sent</Name>
+			<Label>@CXM:SentStatus</Label>
+		</AxEnumValue>
+		<AxEnumValue>
+			<Name>Cancelled</Name>
+			<Label>@ElectronicReporting:CancelledStatus</Label>
+		</AxEnumValue>
+	</EnumValues>
+	<PropertyModifications />
+	<ValueModifications />
+</AxEnumExtension>

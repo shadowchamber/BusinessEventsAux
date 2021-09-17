@@ -32,7 +32,8 @@ public class BusinessEventsFSTPEndpointAux implements IBusinessEventsEndpoint //
 
             try
             {
-                BusinessEventsCommitLog commitLog = BusinessEventsCommitLog::findFromEventId(context.parmEventId());
+                BusinessEventsCommitLog commitLog = BusinessEventsCommitLog::findFromEventId(context.parmEventId(), true);
+
                 BusinessEventsSFTPEndpointAux endpoint;
 
                 select firstonly endpoint
