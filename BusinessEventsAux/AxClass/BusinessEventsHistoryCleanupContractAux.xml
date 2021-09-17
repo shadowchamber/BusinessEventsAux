@@ -3,7 +3,6 @@
 	<Name>BusinessEventsHistoryCleanupContractAux</Name>
 	<SourceCode>
 		<Declaration><![CDATA[
-[DataContractAttribute]
 [DataContract]
 public class BusinessEventsHistoryCleanupContractAux
 {
