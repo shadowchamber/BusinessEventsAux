@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxQuery xmlns:i="http://www.w3.org/2001/XMLSchema-instance" xmlns=""
+	i:type="AxQuerySimple">
+	<Name>BusinessEventsStatusQueryAux</Name>
+	<SourceCode>
+		<Methods>
+			<Method>
+				<Name>classDeclaration</Name>
+				<Source><![CDATA[
+[Query]
+public class BusinessEventsStatusQueryAux extends QueryRun
+{
+}
+]]></Source>
+			</Method>
+		</Methods>
+	</SourceCode>
+	<AllowCrossCompany>Yes</AllowCrossCompany>
+	<QueryType>Union</QueryType>
+	<DataSources>
+		<AxQuerySimpleRootDataSource>
+			<Name>BusinessEventsCommitLog</Name>
+			<Table>BusinessEventsCommitLog</Table>
+			<DataSources />
+			<DerivedDataSources />
+			<Fields>
+				<AxQuerySimpleDataSourceField>
+					<Name>BusinessEventId</Name>
+					<Field>BusinessEventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>EventId</Name>
+					<Field>EventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>State</Name>
+					<Field>State</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>DescriptionAux</Name>
+					<Field>DescriptionAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefRecIdAux</Name>
+					<Field>RefRecIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefTableIdAux</Name>
+					<Field>RefTableIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>SendDateTimeAux</Name>
+					<Field>SendDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ExceptionMessage</Name>
+					<Field>ExceptionMessage</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>FilenameAux</Name>
+					<Field>FilenameAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedByAux</Name>
+					<Field>ModifiedByAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedDateTimeAux</Name>
+					<Field>ModifiedDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+			</Fields>
+			<Ranges />
+			<GroupBy />
+			<Having />
+			<OrderBy />
+		</AxQuerySimpleRootDataSource>
+		<AxQuerySimpleRootDataSource>
+			<Name>BusinessEventsExceptionLog</Name>
+			<Table>BusinessEventsExceptionLog</Table>
+			<DataSources />
+			<DerivedDataSources />
+			<Fields>
+				<AxQuerySimpleDataSourceField>
+					<Name>BusinessEventId</Name>
+					<Field>BusinessEventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>EventId</Name>
+					<Field>EventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>State</Name>
+					<Field>State</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>DescriptionAux</Name>
+					<Field>DescriptionAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefRecIdAux</Name>
+					<Field>RefRecIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefTableIdAux</Name>
+					<Field>RefTableIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>SendDateTimeAux</Name>
+					<Field>SendDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ExceptionMessage</Name>
+					<Field>ExceptionMessage</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>FilenameAux</Name>
+					<Field>FilenameAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedByAux</Name>
+					<Field>ModifiedByAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedDateTimeAux</Name>
+					<Field>ModifiedDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+			</Fields>
+			<Ranges />
+			<GroupBy />
+			<Having />
+			<OrderBy />
+		</AxQuerySimpleRootDataSource>
+		<AxQuerySimpleRootDataSource>
+			<Name>BusinessEventsHistoryAux</Name>
+			<Table>BusinessEventsHistoryAux</Table>
+			<DataSources />
+			<DerivedDataSources />
+			<Fields>
+				<AxQuerySimpleDataSourceField>
+					<Name>BusinessEventId</Name>
+					<Field>BusinessEventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>EventId</Name>
+					<Field>EventId</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>State</Name>
+					<Field>State</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>DescriptionAux</Name>
+					<Field>DescriptionAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefRecIdAux</Name>
+					<Field>RefRecIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>RefTableIdAux</Name>
+					<Field>RefTableIdAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>SendDateTimeAux</Name>
+					<Field>SendDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ExceptionMessage</Name>
+					<Field>ExceptionMessage</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>FilenameAux</Name>
+					<Field>FilenameAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedByAux</Name>
+					<Field>ModifiedByAux</Field>
+				</AxQuerySimpleDataSourceField>
+				<AxQuerySimpleDataSourceField>
+					<Name>ModifiedDateTimeAux</Name>
+					<Field>ModifiedDateTimeAux</Field>
+				</AxQuerySimpleDataSourceField>
+			</Fields>
+			<Ranges />
+			<GroupBy />
+			<Having />
+			<OrderBy />
+		</AxQuerySimpleRootDataSource>
+	</DataSources>
+</AxQuery>

@@ -46,11 +46,34 @@
 			<ExtendedDataType>Name</ExtendedDataType>
 			<FeatureClass>BusinessEventsAuxFeature</FeatureClass>
 		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldString">
+			<Name>ModifiedByAux</Name>
+			<ExtendedDataType>ModifiedByAux</ExtendedDataType>
+		</AxTableField>
+		<AxTableField xmlns=""
+			i:type="AxTableFieldUtcDateTime">
+			<Name>ModifiedDateTimeAux</Name>
+			<ExtendedDataType>ModifiedDateTimeAux</ExtendedDataType>
+		</AxTableField>
 	</Fields>
 	<FullTextIndexes />
 	<Indexes />
 	<Mappings />
-	<PropertyModifications />
+	<PropertyModifications>
+		<AxPropertyModification>
+			<Name>CreatedBy</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+		<AxPropertyModification>
+			<Name>ModifiedBy</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+		<AxPropertyModification>
+			<Name>ModifiedDateTime</Name>
+			<Value>Yes</Value>
+		</AxPropertyModification>
+	</PropertyModifications>
 	<RelationExtensions />
 	<RelationModifications />
 	<Relations />

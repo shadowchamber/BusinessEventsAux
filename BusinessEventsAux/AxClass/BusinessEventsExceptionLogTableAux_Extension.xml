@@ -32,6 +32,9 @@ final public class BusinessEventsExceptionLogTableAux_Extension
             this.FilenameAux = commitLog.FilenameAux;
         }
 
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
         next insert();
     }
 
@@ -45,6 +48,19 @@ final public class BusinessEventsExceptionLogTableAux_Extension
         BusinessEventsExceptionLog::addToHistory(this);
 
         next delete();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    public void update()
+    {
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+        next update();
     }
 
 ]]></Source>

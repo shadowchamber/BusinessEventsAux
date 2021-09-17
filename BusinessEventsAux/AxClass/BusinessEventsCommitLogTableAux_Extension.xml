@@ -44,7 +44,23 @@ final public class BusinessEventsCommitLogTableAux_Extension
             this.FilenameAux = exceptionLog.FilenameAux;
         }
 
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
         next insert();
+    }
+
+]]></Source>
+			</Method>
+			<Method>
+				<Name>update</Name>
+				<Source><![CDATA[
+    public void update()
+    {
+        this.ModifiedByAux = curUserId();
+        this.ModifiedDateTimeAux = DateTimeUtil::getSystemDateTime();
+
+        next update();
     }
 
 ]]></Source>
@@ -85,7 +101,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
         history.DescriptionAux = _commitLog.DescriptionAux;
         history.RefTableIdAux = _commitLog.RefTableIdAux;
         history.RefRecIdAux = _commitLog.RefRecIdAux;
-        history.State = BusinessEventsSendingState::Sent;
+        history.State = _commitLog.State == BusinessEventsSendingState::Waiting ? BusinessEventsSendingState::Cancelled : _commitLog.State;
         history.ExceptionMessage = _commitLog.ExceptionMessage;
         history.FilenameAux = _commitLog.FilenameAux;
         history.SendDateTimeAux = _commitLog.SendDateTimeAux;
@@ -118,6 +134,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
             if (commitLog.RecId != 0)
             {
                 commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+                commitLog.State = BusinessEventsSendingState::Sent;
 
                 BusinessEventsCommitLog::addToHistory(commitLog);
             }
@@ -130,6 +147,7 @@ final public class BusinessEventsCommitLogTableAux_Extension
                 {
                     commitLog.TargetEndpoint = _endpointRecId;
                     commitLog.SendDateTimeAux = DateTimeUtil::getSystemDateTime();
+                    commitLog.State = BusinessEventsSendingState::Sent;
 
                     BusinessEventsCommitLog::addToHistory(commitLog);
                 }

@@ -47,8 +47,10 @@
     <Folder Include="Menu Extensions\" />
     <Folder Include="Security Duty Extensions\" />
     <Folder Include="Security Privileges" />
+    <Folder Include="Simple Queries\" />
     <Folder Include="Tables" />
     <Folder Include="Table Extensions\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AxClass\BusinessEventsAuxFeature">
@@ -121,6 +123,16 @@
       <Name>HostnameAux</Name>
       <Link>EDT Strings\HostnameAux</Link>
     </Content>
+    <Content Include="AxEdt\ModifiedByAux">
+      <SubType>Content</SubType>
+      <Name>ModifiedByAux</Name>
+      <Link>EDT Strings\ModifiedByAux</Link>
+    </Content>
+    <Content Include="AxEdt\ModifiedDateTimeAux">
+      <SubType>Content</SubType>
+      <Name>ModifiedDateTimeAux</Name>
+      <Link>EDT Utc Date Times\ModifiedDateTimeAux</Link>
+    </Content>
     <Content Include="AxEdt\PortAux">
       <SubType>Content</SubType>
       <Name>PortAux</Name>
@@ -191,6 +203,11 @@
       <Name>BusinessEventsWorkspaceHistoryPartAux</Name>
       <Link>Display Menu Items\BusinessEventsWorkspaceHistoryPartAux</Link>
     </Content>
+    <Content Include="AxQuery\BusinessEventsStatusQueryAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsStatusQueryAux</Name>
+      <Link>Simple Queries\BusinessEventsStatusQueryAux</Link>
+    </Content>
     <Content Include="AxSecurityDutyExtension\BusinessEventsSecurityDuty.BusinessEventsAux">
       <SubType>Content</SubType>
       <Name>BusinessEventsSecurityDuty.BusinessEventsAux</Name>
@@ -250,6 +267,11 @@
       <SubType>Content</SubType>
       <Name>BusinessEventsSFTPEndpointAux</Name>
       <Link>Tables\BusinessEventsSFTPEndpointAux</Link>
+    </Content>
+    <Content Include="AxView\BusinessEventsStatusViewAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsStatusViewAux</Name>
+      <Link>Views\BusinessEventsStatusViewAux</Link>
     </Content>
     <Content Include="BusinessEventsAux.en-US.label.txt">
       <SubType>Content</SubType>
