@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="utf-8"?>
+<AxView xmlns:i="http://www.w3.org/2001/XMLSchema-instance">
+	<Name>BusinessEventsStatusViewAux</Name>
+	<SourceCode>
+		<Declaration><![CDATA[
+public class BusinessEventsStatusViewAux extends common
+{
+}
+]]></Declaration>
+		<Methods />
+	</SourceCode>
+	<SubscriberAccessLevel>
+		<Read>Allow</Read>
+	</SubscriberAccessLevel>
+	<Query>BusinessEventsStatusQueryAux</Query>
+	<FieldGroups>
+		<AxTableFieldGroup>
+			<Name>AutoReport</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoLookup</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoIdentification</Name>
+			<AutoPopulate>Yes</AutoPopulate>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoSummary</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>AutoBrowse</Name>
+			<Fields />
+		</AxTableFieldGroup>
+		<AxTableFieldGroup>
+			<Name>Overview</Name>
+			<Label>@GeneralLedger:Overview</Label>
+			<Fields>
+				<AxTableFieldGroupField>
+					<DataField>BusinessEventId</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>EventId</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>State</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>DescriptionAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>RefRecIdAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>RefTableIdAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>SendDateTimeAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ExceptionMessage</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>FilenameAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ModifiedByAux</DataField>
+				</AxTableFieldGroupField>
+				<AxTableFieldGroupField>
+					<DataField>ModifiedDateTimeAux</DataField>
+				</AxTableFieldGroupField>
+			</Fields>
+		</AxTableFieldGroup>
+	</FieldGroups>
+	<Fields>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>BusinessEventId</Name>
+			<DataField>BusinessEventId</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>EventId</Name>
+			<DataField>EventId</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>State</Name>
+			<DataField>State</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>DescriptionAux</Name>
+			<DataField>DescriptionAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>RefRecIdAux</Name>
+			<DataField>RefRecIdAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>RefTableIdAux</Name>
+			<DataField>RefTableIdAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>SendDateTimeAux</Name>
+			<DataField>SendDateTimeAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ExceptionMessage</Name>
+			<DataField>ExceptionMessage</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>FilenameAux</Name>
+			<DataField>FilenameAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ModifiedByAux</Name>
+			<DataField>ModifiedByAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+		<AxViewField xmlns=""
+			i:type="AxViewFieldBound">
+			<Name>ModifiedDateTimeAux</Name>
+			<DataField>ModifiedDateTimeAux</DataField>
+			<DataSource>BusinessEventsCommitLog</DataSource>
+		</AxViewField>
+	</Fields>
+	<Indexes />
+	<Mappings />
+	<Relations />
+	<StateMachines />
+	<ViewMetadata>
+		<Name>Metadata</Name>
+		<SourceCode>
+			<Methods />
+		</SourceCode>
+		<DataSources />
+	</ViewMetadata>
+</AxView>

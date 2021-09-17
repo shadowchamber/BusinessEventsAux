@@ -37,6 +37,7 @@
     <Folder Include="Base Enums\" />
     <Folder Include="Display Menu Items\" />
     <Folder Include="EDT Strings" />
+    <Folder Include="EDT Utc Date Times\" />
     <Folder Include="Form Extensions\" />
     <Folder Include="Forms\" />
     <Folder Include="Label Files\" />
@@ -46,8 +47,10 @@
     <Folder Include="Menu Extensions\" />
     <Folder Include="Security Duty Extensions\" />
     <Folder Include="Security Privileges" />
+    <Folder Include="Simple Queries\" />
     <Folder Include="Tables" />
     <Folder Include="Table Extensions\" />
+    <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AxClass\BusinessEventsAuxFeature">
@@ -74,6 +77,11 @@
       <SubType>Content</SubType>
       <Name>BusinessEventsEndpointConfigurationAux_Extension</Name>
       <Link>Classes\BusinessEventsEndpointConfigurationAux_Extension</Link>
+    </Content>
+    <Content Include="AxClass\BusinessEventsExceptionLogTableAux_Extension">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsExceptionLogTableAux_Extension</Name>
+      <Link>Classes\BusinessEventsExceptionLogTableAux_Extension</Link>
     </Content>
     <Content Include="AxClass\BusinessEventsFSTPEndpointAux">
       <SubType>Content</SubType>
@@ -115,15 +123,35 @@
       <Name>HostnameAux</Name>
       <Link>EDT Strings\HostnameAux</Link>
     </Content>
+    <Content Include="AxEdt\ModifiedByAux">
+      <SubType>Content</SubType>
+      <Name>ModifiedByAux</Name>
+      <Link>EDT Strings\ModifiedByAux</Link>
+    </Content>
+    <Content Include="AxEdt\ModifiedDateTimeAux">
+      <SubType>Content</SubType>
+      <Name>ModifiedDateTimeAux</Name>
+      <Link>EDT Utc Date Times\ModifiedDateTimeAux</Link>
+    </Content>
     <Content Include="AxEdt\PortAux">
       <SubType>Content</SubType>
       <Name>PortAux</Name>
       <Link>EDT Integers\PortAux</Link>
     </Content>
+    <Content Include="AxEdt\SendDateTimeAux">
+      <SubType>Content</SubType>
+      <Name>SendDateTimeAux</Name>
+      <Link>EDT Utc Date Times\SendDateTimeAux</Link>
+    </Content>
     <Content Include="AxEnumExtension\BusinessEventsEndpointType.BusinessEventsAux">
       <SubType>Content</SubType>
       <Name>BusinessEventsEndpointType.BusinessEventsAux</Name>
       <Link>Base Enum Extensions\BusinessEventsEndpointType.BusinessEventsAux</Link>
+    </Content>
+    <Content Include="AxEnumExtension\BusinessEventsSendingState.BusinessEventsAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsSendingState.BusinessEventsAux</Name>
+      <Link>Base Enum Extensions\BusinessEventsSendingState.BusinessEventsAux</Link>
     </Content>
     <Content Include="AxFormExtension\BusinessEventsEndpointConfiguration.BusinessEventsAux">
       <SubType>Content</SubType>
@@ -174,6 +202,11 @@
       <SubType>Content</SubType>
       <Name>BusinessEventsWorkspaceHistoryPartAux</Name>
       <Link>Display Menu Items\BusinessEventsWorkspaceHistoryPartAux</Link>
+    </Content>
+    <Content Include="AxQuery\BusinessEventsStatusQueryAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsStatusQueryAux</Name>
+      <Link>Simple Queries\BusinessEventsStatusQueryAux</Link>
     </Content>
     <Content Include="AxSecurityDutyExtension\BusinessEventsSecurityDuty.BusinessEventsAux">
       <SubType>Content</SubType>
@@ -234,6 +267,11 @@
       <SubType>Content</SubType>
       <Name>BusinessEventsSFTPEndpointAux</Name>
       <Link>Tables\BusinessEventsSFTPEndpointAux</Link>
+    </Content>
+    <Content Include="AxView\BusinessEventsStatusViewAux">
+      <SubType>Content</SubType>
+      <Name>BusinessEventsStatusViewAux</Name>
+      <Link>Views\BusinessEventsStatusViewAux</Link>
     </Content>
     <Content Include="BusinessEventsAux.en-US.label.txt">
       <SubType>Content</SubType>

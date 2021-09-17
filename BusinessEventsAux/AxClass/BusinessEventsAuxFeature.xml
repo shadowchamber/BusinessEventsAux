@@ -92,7 +92,7 @@ public final class BusinessEventsAuxFeature implements IFeatureMetadata
     [Hookable(false)]
     public WebSiteURL learnMoreUrl()
     {
-        return '';
+        return 'http://www.example.com';
     }
 
 ]]></Source>
